@@ -11,3 +11,5 @@ class Test():
 
 t = Test()
 print(t.function_test())
+# class_function
+# function_test

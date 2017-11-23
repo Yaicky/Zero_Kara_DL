@@ -67,10 +67,7 @@ print(net.params['b2'].shape)
 x = np.random.randn(100, 784)
 t = np.random.randn(100, 10)
 y = net.predict(x)
-print('ok')
+
 grads = net.numerical_gradient(x, t)
 print(grads['W1'].shape)
 
-
-
-print('ok1')
