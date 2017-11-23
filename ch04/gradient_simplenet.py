@@ -9,7 +9,9 @@ from common.gradient import numerical_gradient
 
 class simpleNet:
     def __init__(self):
-        self.W = np.random.randn(2, 3)
+        # self.W = np.random.randn(2, 3)
+        self.W = np.array([[ 1.16747888, -1.54896546,  0.02434254],
+                [ 0.18342776, -1.95447207,  0.62683599]])
 
     def predict(self, x):
         return np.dot(x, self.W)
@@ -18,7 +20,6 @@ class simpleNet:
         z = self.predict(x)
         y = softmax(z)
         loss = cross_entropy_error(y, t)
-
         return loss
 
 x = np.array([0.6, 0.9])
