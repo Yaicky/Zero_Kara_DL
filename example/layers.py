@@ -36,14 +36,14 @@ class SoftmaxWithLoss():
         self.t = None
 
     def softmax(self, x):
-        # if x.ndim == 2:
-        #     x = x.T
-        #     x = x - np.max(x, axis=0)
-        #     y = np.exp(x) / np.sum(np.exp(x), axis=0)
-        #     return y.T
+        if x.ndim == 2:
+            x = x.T
+            x = x - np.max(x, axis=0)
+            y = np.exp(x) / np.sum(np.exp(x), axis=0)
+            return y.T
 
-        x = x - np.max(x)
-        return np.exp(x) / np.sum(np.exp(x))
+        # x = x - np.max(x)
+        # return np.exp(x) / np.sum(np.exp(x))
 
     def cross_entropy_error(self, y, t):
         if y.ndim == 1:
@@ -54,8 +54,7 @@ class SoftmaxWithLoss():
             t = t.argmax(axis=1)
 
         batch_size = y.shape[0]
-
-        return -np.sum(np.log(y[np.arange(batch_size), self.t])) / batch_size
+        return -np.sum(np.log(y[np.arange(batch_size), t])) / batch_size
 
     def forward(self, x, t):
         self.y = self.softmax(x)
@@ -110,3 +109,5 @@ class Relu():
         dx = dout
 
         return dx
+
+
