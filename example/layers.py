@@ -54,6 +54,7 @@ class SoftmaxWithLoss():
             t = t.argmax(axis=1)
 
         batch_size = y.shape[0]
+
         return -np.sum(np.log(y[np.arange(batch_size), t])) / batch_size
 
     def forward(self, x, t):
