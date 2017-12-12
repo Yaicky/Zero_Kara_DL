@@ -42,8 +42,8 @@ class SoftmaxWithLoss():
             y = np.exp(x) / np.sum(np.exp(x), axis=0)
             return y.T
 
-        # x = x - np.max(x)
-        # return np.exp(x) / np.sum(np.exp(x))
+        x = x - np.max(x)
+        return np.exp(x) / np.sum(np.exp(x))
 
     def cross_entropy_error(self, y, t):
         if y.ndim == 1:
